@@ -1,0 +1,79 @@
+
+.showcase .container #all_information #client_name{
+  display: inline-block;
+}
+
+
+#button_position{
+  display: inline-block;
+  width:1100px;
+  float:right;
+  height:40px;
+  padding: 1px 10px;
+}
+
+#all_information hr:first-child{
+  width:80%;
+  float: right;
+}
+#button_position .button_container{
+  display: inline-block;
+  float: left;
+  padding:5px 10px;
+  margin-left:30px;
+  width:700px;
+}
+#button_position .button_container .chart_button{
+  width:80px;
+  height:35px;
+}
+#type,.date,#chart_type,#date_type{
+  display: inline-block;
+}
+#type{
+  margin-left:50px;
+}
+#chart_type{
+  float:right;
+  margin-right:90px;
+}
+.date{
+  position: relative;
+  display: inline-block;
+  float:right;
+}
+#date_type
+{
+  float: right;
+}
+
+.button_container #date_type .chart_button{
+  width:40px;
+}
+#date_month{
+  width:260px;
+}
+.wrapper .chart_container{
+  clear:both;
+  width:75%;
+  margin:auto;
+  text-align: center;
+  float:left;
+  margin-left: 20px;
+  display:inline-block;
+  margin-top:50px;
+  box-shadow: 0 0 6px rgb(146, 150, 146);
+  padding: 20px 10px 010px;
+}
+.wrapper .Doughnut{
+  margin-top:50px;
+  display:inline-block;
+  float:right;
+  width:250px;
+  height:250px;
+  margin-right:20px;
+  box-shadow: 0 0 6px rgb(146, 150, 146);
+  padding: 20px 10px;
+  z-index: -1;
+}
+z

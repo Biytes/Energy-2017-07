@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/model/enter_model.css">
+    <link rel="stylesheet" href="css/google_icon/material-icons.css">
+    <link rel="stylesheet" href="css/model/controller_menu.css">
+    <link rel="stylesheet" href="css/model/information.css">
+    <link rel="stylesheet" href="css/model/loading.css">
+    <link rel="stylesheet" href="css/model/chart_button.css">
+    <link rel="stylesheet" href="css/model/datecalender.css">
+    <link rel="stylesheet" href="css/model/original_table.css">
+    <link rel="stylesheet" href="css/model/tree.css">
+    <link rel="stylesheet" href="css/model/tabbed.css">
+    <link rel="stylesheet" href="css/private/assignment.css">
+    <link rel="stylesheet" href="css/model/responsive.css">
+
+
+    <script src="http://cdn.bootcss.com/Chart.js/2.5.0/Chart.bundle.js"></script>
+    <script src="http://cdn.bootcss.com/Chart.js/2.5.0/Chart.js"></script>
+    <script type="text/javascript" src="cdn/jquery-3.1.1.js"></script>
+    <script src="http://cdn.bootcss.com/datatables/1.10.15/js/jquery.dataTables.js"></script>
+    <script src="http://cdn.bootcss.com/datatables/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <title>能源统计</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 16px;
+            overflow-x: hidden;
+            background-color: transparent;
+        }
+
+        .background {
+            background: url("img/background.png");
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="block"></div>
+    <header>
+        <div class="header-inner">
+            <a href="whole_view.html" id="home_page"><i class="material-icons use_icon">home</i></a>
+            <h2>能源监控系统</h2>
+            <div class="fright" id="user_icon">
+                <i class="material-icons use_icon">account_circle</i>
+            </div>
+            <div id="user_launch" class="absolute">
+                <ul>
+                    <li><a href="">J&T</a></li>
+                    <!--管理员信息-->
+                    <!--管理员用户管理的页面-->
+                    <li><a href="">Account Settings</a></li>
+                    <li><a href="index.html">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="current_position">
+            <ul>
+                <li><i class="material-icons use_icon" style="color:#1b1c1d; top:4px;">location_on</i></li>
+                <li>当前位置:</li>
+                <li><a href="whole_view.html">能源总览</a></li>
+                <li><a href="assignment.html">能源统计</a></li>
+            </ul>
+        </div>
+    </nav>
+    <aside title="点击展开">
+        <div class="control_menu">
+            <i id="launch" class="material-icons use_icon" style="top:7px;">view_headline</i>
+            <div class="content">
+                <div class="back"></div>
+                <div class="icons">
+                    <div class="icon" id="top_icon" tabindex="1"><i id="account" class="material-icons">supervisor_account</i>
+                        <div class="title">用户</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="cost" class="material-icons">payment</i>
+                        <div class="title">缴费</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="assess" class="material-icons">assessment</i>
+                        <div class="title">能源统计</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="assign" class="material-icons">assignment</i>
+                        <div class="title">能源统计</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="equipment" class="material-icons">devices_other</i>
+                        <div class="title">设备检测</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="multi_anlysis" class="material-icons">equalizer</i>
+                        <div class="title">能耗对比</div>
+                    </div>
+                    <hr>
+                    <div class="icon" id="controller_shrink" tabindex="1"><i class="material-icons">close</i>
+                        <div class="title">缩小</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <section class="showcase">
+        <div class="container relative">
+            <div class="building_tree">
+                <div id="search_building">
+                    <input type="text" placeholder="Search...." style="
+                      height:29px; width:210px;" />
+                    <i class="material-icons search_icon">search</i>
+                </div>
+                <div id="tree_view">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="whole_school">
+
+                            <label for="whole_school"></label> <span>华南理工大学广州学院</span>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="admin">
+                                    <label for="admin">
+                                    </label>
+                                    <span>行政楼办公建筑</span>
+                                    <ul>
+                                        <li><span>行政楼</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="library">
+                                    <label for="library">
+                                    </label>
+                                    <span>图书馆建筑</span>
+                                    <ul>
+                                        <li><span>图书馆</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="education">
+                                    <label for="education">
+                                    </label>
+                                    <span>教学楼建筑</span>
+                                    <ul>
+                                        <li><span>A1</span></li>
+                                        <li><span>A2</span></li>
+                                        <li><span>A3</span></li>
+                                        <li><span>A4</span></li>
+                                        <li><span>A5</span></li>
+                                        <li><span>A6</span></li>
+                                        <li><span>A7</span></li>
+                                        <li><span>A8</span></li>
+                                        <li><span>A9</span></li>
+                                        <li><span>A10</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="science">
+                                    <label for="science">
+                                    </label>
+                                    <span>科研楼建筑</span>
+                                    <ul>
+                                        <li><span>B1</span></li>
+                                        <li><span>B2</span></li>
+                                        <li><span>B3</span></li>
+                                        <li><span>B4</span></li>
+                                        <li><span>B5</span></li>
+                                        <li><span>B6</span></li>
+                                        <li><span>B7</span></li>
+                                        <li><span>B8</span></li>
+                                        <li><span>B9</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="gym">
+                                    <label for="gym">
+                                    </label>
+                                    <span>场馆类建筑</span>
+                                    <ul>
+                                        <li><span>学生活动中心</span></li>
+                                        <li><span>体育馆及看台</span></li>
+                                        <li><span>游泳池</span></li>
+                                        <li><span>网球场</span></li>
+                                        <li><span>篮球场</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="mess">
+                                    <label for="mess">
+                                    </label>
+                                    <span>食堂餐厅</span>
+                                    <ul>
+                                        <li><span>第一食堂</span></li>
+                                        <li><span>第二食堂</span></li>
+                                        <li>
+                                            <input type="checkbox" id="mess_third">
+                                            <label for="mess_third">
+                                              </label>
+                                            <span>第三食堂</span>
+                                            <ul>
+                                                <li><span>一楼</span></li>
+                                                <li><span>二楼</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="mess_fourth">
+                                            <label for="mess_fourth">
+                                              </label>
+                                            <span>第四食堂</span>
+                                            <ul>
+                                                <li><span>一楼</span></li>
+                                                <li><span>二楼</span></li>
+                                                <li><span>三楼</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="student_dormitory">
+                                    <label for="student_dormitory">
+                                    </label>
+                                    <span>学生宿舍</span>
+                                    <ul>
+                                        <li><span>C1</span></li>
+                                        <li><span>C2</span></li>
+                                        <li><span>C3</span></li>
+                                        <li><span>C4</span></li>
+                                        <li><span>C5</span></li>
+                                        <li><span>C6</span></li>
+                                        <li><span>C7</span></li>
+                                        <li><span>C8</span></li>
+                                        <li><span>C9</span></li>
+                                        <li><span>C10</span></li>
+                                        <li><span>C11</span></li>
+                                        <li><span>C12</span></li>
+                                        <li><span>C13</span></li>
+                                        <li><span>C14</span></li>
+                                        <li><span>C15</span></li>
+                                        <li><span>C16</span></li>
+                                        <li><span>C17</span></li>
+                                        <li><span>C18</span></li>
+                                        <li><span>C19</span></li>
+                                        <li><span>C20</span></li>
+                                        <li><span>C21</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="teacher_dormitory">
+                                    <label for="teacher_dormitory">
+                                    </label>
+                                    <span>教工宿舍</span>
+                                    <ul>
+                                        <li><span>D1</span></li>
+                                        <li><span>D2</span></li>
+                                        <li><span>D3</span></li>
+                                        <li><span>D4</span></li>
+                                        <li><span>D5</span></li>
+                                        <li><span>D6</span></li>
+                                        <li><span>D7</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="special_area">
+                                    <label for="special_area">
+                                    </label>
+                                    <span>其他建筑</span>
+                                    <ul>
+                                        <li><span>特殊区域</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="all_information" class="loading_center">
+                <!--class="loading_center"-->
+                <!--loading_center 加载数据的时候-->
+                <h4 id="client_name" style="display:inline-block"><i class="material-icons use_icon">supervisor_account</i><span>Sed diam nonumy</span></h4>
+                <nav id="table_type_controller">
+                  <div class="table_type_button">
+                    <button class="table_button month">月报表</button>
+                    <button class="table_button year table_button_active">年报表</button>
+                  </div>
+                  <div class="table_date_selector">
+                    <div id="date_month" >
+                        <select>
+                          <option value="" disabled>请选择年 -</option>
+                            <option value="">2015年</option>
+                            <option value="">2016年</option>
+                            <option value="">2017年</option>
+                        </select>
+                        <select>
+                          <option value="" disabled>请选择月 -</option>
+                            <option value="">一月</option>
+                            <option value="">二月</option>
+                            <option value="">三月</option>
+                            <option value="">四月</option>
+                            <option value="">五月</option>
+                            <option value="">六月</option>
+                            <option value="">七月</option>
+                            <option value="">八月</option>
+                            <option value="">九月</option>
+                            <option value="">十月</option>
+                            <option value="">十一月</option>
+                            <option value="">十二月</option>
+                        </select>
+                    </div>
+                    <div id="date_year" style="display:none">
+                        <select>
+                            <option value="" disabled>- 请选择年份 -</option>
+                              <option value="">2015年</option>
+                              <option value="">2016年</option>
+                              <option value="">2017年</option>
+                          </select>
+                    </div>
+                  </div>
+                </nav>
+                <div class="tabbed round">
+                    <ul>
+                        <li class="table3">分项统计表</li>
+                        <li class="table2">能耗统计表</li>
+                        <li class="table1 tabbed_active">能耗汇总表</li>
+                    </ul>
+                </div>
+                <div id="loading-container" style="display:none">
+                    <div class="loading"></div>
+                    <div id="loading-text">loading</div>
+                </div>
+                <div class="wrapper">
+                    <!--加载完成前style="display:none"-->
+                    <div class="row" id="table1">
+
+                        <div class="card material-table">
+                            <div class="table-header">
+                                <span class="table-title">能耗汇总表</span>
+                                <div class="actions">
+                                    <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                                </div>
+                            </div>
+                            <table id="table1_month" style="display:none">          <!--日报表     选择月份和年份-->
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>燃气总量<br>m³</th>
+                                        <th>电总量<br>kWh</th>
+                                        <th>人均电<br>kWh/人</th>
+                                        <th>面积均电<br>KWH/㎡</th>
+                                        <th>水总量<br/>m³</th>
+                                        <th>人均水<br/>m³/人</th>
+                                        <th>面积均水<br>m³/㎡</th>
+                                        <th>折标煤总量<br>tce</th>
+                                        <th>人均折标煤<br>kgce/人</th>
+                                        <th>面积标煤<br>kgce/㎡</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table id="table1_year" >                            <!--月报表   选择年-->
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>燃气总量<br>m³</th>
+                                        <th>电总量<br>kWh</th>
+                                        <th>人均电<br>kWh/人</th>
+                                        <th>面积均电<br>KWH/㎡</th>
+                                        <th>水总量<br/>m³</th>
+                                        <th>人均水<br/>m³/人</th>
+                                        <th>面积均水<br>m³/㎡</th>
+                                        <th>折标煤总量<br>tce</th>
+                                        <th>人均折标煤<br>kgce/人</th>
+                                        <th>面积标煤<br>kgce/㎡</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" id="table2" style="display:none">          <!--水/电-->
+
+                        <div class="card material-table">
+                            <div class="table-header">
+                                <span class="table-title">能耗统计表</span>
+                                <div class="actions">
+                                    <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                                </div>
+                            </div>
+                            <table id="table2_month" style="display:none">
+                                <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>能源</th>
+                                        <th>月份</th>
+                                        <th>1日</th>
+                                        <th>2日</th>
+                                        <th>3日</th>
+                                        <th>4日</th>
+                                        <th>5日</th>
+                                        <th>6日</th>
+                                        <th>7日</th>
+                                        <th>8日</th>
+                                        <th>9日</th>
+                                        <th>10日</th>
+                                        <th>11日</th>
+                                        <th>12日</th>
+                                        <th>13日</th>
+                                        <th>14日</th>
+                                        <th>15日</th>
+                                        <th>16日</th>
+                                        <th>17日</th>
+                                        <th>18日</th>
+                                        <th>19日</th>
+                                        <th>21日</th>
+                                        <th>22日</th>
+                                        <th>23日</th>
+                                        <th>24日</th>
+                                        <th>25日</th>
+                                        <th>26日</th>
+                                        <th>27日</th>
+                                        <th>28日</th>
+                                        <th>29日</th>
+                                        <th>30日</th>
+                                        <th>31日</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table id="table2_year" >
+                                <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>能源</th>
+                                        <th>年份</th>
+                                        <th>1月</th>
+                                        <th>2月</th>
+                                        <th>3月</th>
+                                        <th>4月</th>
+                                        <th>5月</th>
+                                        <th>6月</th>
+                                        <th>7月</th>
+                                        <th>8月</th>
+                                        <th>9月</th>
+                                        <th>10月</th>
+                                        <th>11月</th>
+                                        <th>12月</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" id="table3" style="display:none">
+
+                        <div class="card material-table">
+                            <div class="table-header">
+                                <span class="table-title">分项统计表</span>
+                                <div class="actions">
+                                    <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                                </div>
+                            </div>
+                            <table id="table3_month" style="display:none">
+                                <thead>
+                                    <tr>
+                                        <th>建筑</th>
+                                        <th>能源</th>
+                                        <th>能耗量<br>kWh</th>
+                                        <th>标准煤<br>kgce</th>
+                                        <th>面积<br>㎡</th>
+                                        <th>单位面积能耗<br>kWh/㎡</th>
+                                        <th>人数</th>
+                                        <th>人均能耗<br>kWh/人</th>
+                                        <th>占比<br>%</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table id="table3_year">
+                              <thead>
+                                  <tr>
+                                      <th>建筑</th>
+                                      <th>能源</th>
+                                      <th>能耗量<br>kWh</th>
+                                      <th>标准煤<br>kgce</th>
+                                      <th>面积<br>㎡</th>
+                                      <th>单位面积能耗<br>kWh/㎡</th>
+                                      <th>人数</th>
+                                      <th>人均能耗<br>kWh/人</th>
+                                      <th>占比<br>%</th>
+                                  </tr>
+                              </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <span>@J&T&nbsp;q1653082552@outlook.com</span>
+    </footer>
+    <script src="js/model/model.js"></script>
+    <script src="js/model/controller_menu.js"></script>
+    <script src="js/model/tree.js"></script>
+    <script src="js/model/loading.js"></script>
+    <script src="js/model/tabbed.js"></script>
+    <script src="js/private/assignment.js"></script>
+    <script src="js/model/original_table.js"></script>
+
+</body>
+
+</html>

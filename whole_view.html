@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/model/enter_model.css">
+    <link rel="stylesheet" href="css/google_icon/material-icons.css">
+    <link rel="stylesheet" href="css/model/controller_menu.css">
+    <link rel="stylesheet" href="css/model/tree.css">
+    <link rel="stylesheet" href="css/model/loading.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/model/chart_button.css">
+    <link rel="stylesheet" href="css/model/responsive.css">
+    <link rel="stylesheet" href="css/model/progress_bar.css">
+    <link rel="stylesheet" href="css/private/whole_view.css">
+    <script src="http://cdn.bootcss.com/Chart.js/2.5.0/Chart.bundle.js"></script>
+    <script src="http://cdn.bootcss.com/Chart.js/2.5.0/Chart.js"></script>
+    <script type="text/javascript" src="cdn/jquery-3.1.1.js"></script>
+    <title>能源总览</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 16px;
+            background-color: rgba(#8a8181, 0.78);
+            overflow-x: hidden;
+        }
+
+        .background {
+            background: url("img/background.png");
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="block"></div>
+    <header>
+        <div class="header-inner">
+            <a href="whole_view.html" id="home_page"><i class="material-icons use_icon">home</i></a>
+            <h2>能源监控系统</h2>
+            <div class="fright" id="user_icon">
+                <i class="material-icons use_icon">account_circle</i>
+            </div>
+            <div id="user_launch" class="absolute">
+                <ul>
+                    <li><a href="">J&T</a></li>
+                    <!--管理员信息-->
+                    <!--管理员用户管理的页面-->
+                    <li><a href="">Account Settings</a></li>
+                    <li><a href="index.html">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="current_position">
+            <ul>
+                <li><i class="material-icons use_icon">location_on</i></li>
+                <li>当前位置:</li>
+                <li><a href="whole_view.html">能源总览</a></li>
+            </ul>
+        </div>
+    </nav>
+    <aside title="点击展开">
+        <div class="control_menu">
+            <i id="launch" class="material-icons use_icon" style="top:7px;">view_headline</i>
+            <div class="content">
+                <div class="back"></div>
+                <div class="icons">
+                    <div class="icon" id="top_icon" tabindex="1"><i id="account" class="material-icons">supervisor_account</i>
+                        <div class="title">用户</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="cost" class="material-icons">payment</i>
+                        <div class="title">缴费</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="assess" class="material-icons">assessment</i>
+                        <div class="title">能源统计</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="assign" class="material-icons">assignment</i>
+                        <div class="title">财务报表</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="equipment" class="material-icons">devices_other</i>
+                        <div class="title">设备检测</div>
+                    </div>
+                    <div class="icon" tabindex="1"><i id="multi_anlysis" class="material-icons">equalizer</i>
+                        <div class="title">能耗对比</div>
+                    </div>
+                    <hr>
+                    <div class="icon" id="controller_shrink" tabindex="1"><i class="material-icons">close</i>
+                        <div class="title">缩小</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <section class="showcase">
+        <div class="container">
+            <div id="all_information">
+                <!--class="loading_center"-->
+                <!--loading_center 加载数据的时候-->
+                <h4 id="client_name"><i class="material-icons use_icon">supervisor_account</i><span>华南理工大学广州学院</span></h4>
+                <div id="loading-container" style="display:none">
+                    <!--加载动画-->
+                    <div class="loading"></div>
+                    <div id="loading-text">loading</div>
+                </div>
+                <div class="wrapper">
+                    <!--加载完成前style="display:none"-->
+                    <div id="year_conclusion">
+                        <h5>年度统计</h5>
+                        <ul>
+                            <li>
+                                <i class="material-icons use_icon money " style="top:6px;">attach_money</i>总费用:<b>353.1万元</b>
+                                <li><i class="material-icons use_icon location_city " style="top:6px;">location_city</i>总能耗:<b>671 tce</b>
+                                </li>
+                                <li><i class="material-icons use_icon flash_on " style="top:6px;">flash_on</i>总用电:<b>545.7万kWh</b>
+                                </li>
+                                <li><i class="material-icons use_icon invert_colors " style="top:6px; ">invert_colors</i>总用水:<b>0.0m³</b>
+                                </li>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="bar_chart_comparation">
+                        <h4>本年度各建筑能耗对比</h4>
+                        <div class="button_container">
+                            <button class="water chart_button">水</button>
+                            <button class="electric chart_button">电</button>
+                        </div>
+                        <div class="chart">
+                            <canvas id="horizontal_water" width="600" height="300"></canvas>
+                            <canvas id="horizontal_electric" width="600" height="300" style="display:none"></canvas>
+                            <!--<canvas id="bar" style="display:none" width="800" height="400"></canvas>-->
+                        </div>
+                    </div>
+                    <div id="pie_chart_comparation">
+                        <div class="chart">
+                            <canvas id="pie_chart" width="280" height="280"></canvas>
+                        </div>
+                    </div>
+                    <div id="information_form">
+                        <h4>校区概况</h4>
+                        <ul class="school_info_container">
+                            <li><i class="material-icons use_icon">school</i>本年度在校人数<span id="school_population">25000人</span></li>
+                            <li><i class="material-icons use_icon">map</i>面积:<span id="cover_area">50.0万㎡</span></li>
+                            <li><i class="material-icons use_icon">location_city</i>监测建筑数量:<span id="supervised_building_number">56栋</span></li>
+                            <hr/>
+                        </ul>
+                        <ul class="individual_area">
+                            <h5>本年度单位面积能耗值/基准值对比</h5>
+                            <hr style="width:80%; margin-left:5px;">
+                            <li><span>单位面积费用(元/㎡)&nbsp&nbsp:</span><b></b>
+                                <div class="progress_back">
+                                    <div class="progress_bar"></div><span class="compared_number">11.49/27.76</span></div>
+                            </li>
+                            <li><span>单位面积能耗(kgce/㎡)&nbsp&nbsp:</span><b></b>
+                                <div class="progress_back">
+                                    <div class="progress_bar"></div><span class="compared_number">2.18/13.98</span></div>
+                            </li>
+                            <li><span>单位面积电耗(kWh/㎡)&nbsp&nbsp:</span><b></b>
+                                <div class="progress_back">
+                                    <div class="progress_bar"></div><span class="compared_number">17.77/45.12</span></div>
+                            </li>
+                            <li><span>单位面积水耗(m³/㎡)&nbsp&nbsp:</span><b></b>
+                                <div class="progress_back">
+                                    <div class="progress_bar"></div><span class="compared_number">2.56/5.23</span></div>
+                            </li>
+                        </ul>
+                        <ul class="individual_person">
+                            <h5>本年度人均能耗值/基准值对比</h5>
+                            <hr style="width:80%; margin-left:5px;">
+                            <li><span>人均费用(元/人)&nbsp&nbsp:</span><b></b>
+                                <div class="progress_back">
+                                    <div class="progress_bar"></div><span class="compared_number">229.89/715.84</span></div>
+                            </li>
+                            <li><span>人均能耗(kgce/人)&nbsp&nbsp:</span><b></b>
+                                <div class="progress_back">
+                                    <div class="progress_bar"></div><span class="compared_number">43.67/358.17</span></div>
+                            </li>
+                            <li><span>人均电耗(kWh/人)&nbsp&nbsp:</span><b></b>
+                                <div class="progress_back">
+                                    <div class="progress_bar"></div><span class="compared_number">355.31/863.45</span></div>
+                            </li>
+                            <li><span>人均水耗(m³/人)&nbsp&nbsp:</span><b></b>
+                                <div class="progress_back">
+                                    <div class="progress_bar"></div><span class="compared_number">15.3/47.67</span></div>
+                            </li>
+                        </ul>
+                        <table></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <span>@J&T&nbsp;q1653082552@outlook.com</span>
+    </footer>
+</body>
+<script src="js/model/model.js"></script>
+<script src="js/model/controller_menu.js"></script>
+<script src="js/model/tree.js"></script>
+<script src="js/model/chart_test.js"></script>
+<script src="js/model/progress_bar.js"></script>
+<script src="js/model/loading.js"></script>
+<script src="js/private/whole_view.js"></script>
+</html>

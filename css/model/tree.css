@@ -1,0 +1,179 @@
+/*tree_position*/
+.showcase .container .building_tree{
+  width:260px;                                                    /*  该这里直接改树的宽度*/
+  height:680px;
+  border-right:1px solid rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  overflow: hidden;
+  font-size:14px;
+}
+.showcase .container .building_tree #tree_view::-webkit-scrollbar
+{
+    width: 3px;
+    height: 8px;
+    background-color: #655d5d;
+}
+
+/*tree_scroller*/
+
+.showcase .container .building_tree #tree_view::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.showcase .container .building_tree #tree_view::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+/*search_frame*/
+
+.showcase .container .building_tree #search_building{
+  position: relative;
+  padding-right: 3px;
+}
+.showcase .container .building_tree #search_building input{
+  width:85%;
+  height:39px;
+  display: inline-block;
+  margin-top: 10px;
+  border:4px solid #212121;
+  box-shadow: 0 0 8px rgb(46, 48, 44);
+}
+.showcase .container .building_tree #search_building input:focus{
+  border:4px solid rgb(98, 107, 115);
+}
+.showcase .container .building_tree #search_building .search_icon{
+  font-size: 35px;
+  height:39px;
+  color:#999;
+  line-height:39px;
+  display: inline-block;
+  margin-top:10px;
+  position: absolute;
+  cursor: pointer;
+  background-color: #1b1c1d;
+  box-shadow: 0 0 8px rgb(46, 48, 44);
+}
+
+
+
+/*tree*/
+
+.showcase .container .building_tree #tree_view{
+  margin-top: 20px;
+  width:100%;
+  height:600px;
+    overflow-y:scroll;
+    position: relative;
+}
+#tree_view {
+    float: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#tree_view ul {
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    list-style: none;
+    padding-left: 1.5em;
+}
+#tree_view ul:first-child{
+  margin-bottom: 10px;
+}
+#tree_view ul li{
+  width:auto;
+}
+#tree_view ul li span {
+    -webkit-transition-property: color;
+    -moz-transition-property: color;
+    -ms-transition-property: color;
+    -o-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    cursor: pointer;
+    width:auto;
+}
+
+#tree_view ul li span:hover {
+    color: rgba(28, 124, 213, 0.9);
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    text-decoration: underline;
+}
+#tree_view input~ul{
+  -webkit-transition: height 0.6s;
+  -moz-transition: height 0.6s;
+  -o-transition: height 0.6s;
+  transition: height 0.6s;
+  overflow: hidden;
+}
+#tree_view input {
+    display: none;
+}
+#tree_view input:checked~ul {
+    display: none;
+}
+
+#tree_view input~label {
+    cursor: pointer;
+}
+
+#tree_view input~label:before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    margin-left: -1em;
+    margin-top: 0.4em;
+    border-width: 4.5px;
+    border-style: solid;
+    border-top-color: transparent;
+    border-right-color: #c66666;
+    border-bottom-color: #c66666;
+    border-left-color: transparent;
+    opacity: 1.0;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -ms-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+#tree_view input:checked~label:before {
+    margin-left: -0.8em;
+    border-width: 6px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: #c66666;
+}
+
+
+.tree_onclick{
+  background-color:#827a7b;
+  border-radius: 4px;
+  width:auto;
+}

@@ -1,0 +1,61 @@
+.showcase .container #all_information .wrapper::-webkit-scrollbar {
+    width: 3px;
+    height: 8px;
+    background-color: #655d5d;
+}
+
+.showcase .container #all_information .wrapper::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f4f4f4;
+}
+
+.showcase .container #all_information .wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #655d5d;
+}
+
+.showcase .container #all_information {
+    width: 1380px;
+    float: right;
+    background-color: transparent;
+
+}
+
+#all_information .wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-width: 1260px;
+    padding-bottom: 10px;
+    height:680px;
+    margin-bottom: 80px;
+    padding: 15px 15px 50px;
+    position: relative;
+    background-color: transparent;
+}
+
+.showcase .container #all_information #client_name {
+    margin: 0;
+    height: 40px;
+    width: 200px;
+    line-height: 40px;
+    cursor: pointer;
+    text-align: left;
+    padding-right: 3px;
+    border-bottom: 2px solid #e37f7f;
+}
+
+.showcase .container #all_information #client_name:hover {
+    box-shadow: 2px 2px 4px #e37f7f;
+    border-color: rgb(219, 219, 223);
+}
+
+.showcase .container #all_information #client_name i {
+    margin: 5px;
+    color: #333;
+}
+
+.loading_center {
+    text-align: center;
+}

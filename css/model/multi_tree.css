@@ -1,0 +1,127 @@
+.building_tree .tree_view_multi,
+.building_tree .tree_view_multi * {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.showcase .container .building_tree .tree_view_multi::-webkit-scrollbar
+{
+    width: 3px;
+    height: 6px;
+    background-color: #655d5d;
+}
+
+/*tree_scroller*/
+
+.showcase .container .building_tree .tree_view_multi::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.showcase .container .building_tree .tree_view_multi::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+.showcase .container .building_tree .tree_view_multi{
+  margin-top: 20px;
+  width:100%;
+  height:600px;
+    overflow-y:scroll;
+    position: relative;
+}
+.building_tree .tree_view_multi label[for]:hover{
+  text-decoration: underline;
+  color:rgb(83, 152, 201);
+}
+.building_tree .tree_view_multi label[for]:not([name])
+{
+  white-space: nowrap;
+}
+.building_tree .tree_view_multi label[for][name]::before,
+.building_tree .tree_view_multi label span::before {
+    content: "\25b6";
+    display: inline-block;
+    margin: 2px 0 0;
+    width: 13px;
+    height: 13px;
+    vertical-align: top;
+    text-align: center;
+    color: #c66666;
+    font-size: 8px;
+    line-height: 13px;
+}
+
+.building_tree .tree_view_multi li ul {
+    margin: 0 0 0 22px;
+}
+
+.building_tree .tree_view_multi * {
+    vertical-align: middle;
+}
+
+.building_tree .tree_view_multi {
+    font: normal 11px/16px "Segoe UI", Arial, Sans-serif;
+}
+
+.building_tree .tree_view_multi li {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    margin-left: -5px;
+    width:500px;
+}
+
+.building_tree .tree_view_multi input[type="checkbox"] {
+    display: none;
+}
+
+.building_tree .tree_view_multi label {
+    cursor: pointer;
+}
+.building_tree .tree_view_multi label[for][name]::before {                      /*三角形*/
+    -webkit-transform: translatex(-24px);
+    -moz-transform: translatex(-24px);
+    -ms-transform: translatex(-24px);
+    -o-transform: translatex(-24px);
+    transform: translatex(-21px);
+}
+.building_tree .tree_view_multi label span::before {
+    -webkit-transform: translatex(16px);
+    -moz-transform: translatex(16px);
+    -ms-transform: translatex(16px);
+    -o-transform: translatex(16px);
+    transform: translatex(16px) translateY(1px);
+}
+.building_tree .tree_view_multi label[for]:not([name]){
+  transform: translateX(10px);
+  display:inline-block;
+
+}
+.building_tree .tree_view_multi input[type="checkbox"][id]:checked~label[for][name]::before {
+    content: "\25bc";
+}
+
+.building_tree .tree_view_multi input[type="checkbox"][id]:not(:checked)~ul {
+    display: none;
+}
+
+.building_tree .tree_view_multi label:not([for]) {
+    margin: 0 8px 0 0;
+}
+
+.building_tree .tree_view_multi label span::before {                                      /*将三角形改成正方形*/
+    content: "";
+    border: solid 1px #1375b3;
+    color: #1375b3;
+    opacity: .50;
+}
+
+.building_tree .tree_view_multi label input:checked+span::before {                                        /*正方形里的勾勾*/
+    content: "\2714";
+    box-shadow: 0 0 2px rgba(0, 0, 0, .25) inset;
+    opacity: 1;
+}

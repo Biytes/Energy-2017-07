@@ -1,0 +1,336 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
+
+#date {
+    font: 300 16px/1.5em "Open Sans";
+  }
+
+
+
+
+  * {
+    -webkit-text-size-adjust: none;
+  }
+  #date_year {
+    max-width: 200px;
+    margin-right: 80px;
+  }
+  #date_month select{
+    max-width: 100px;
+    margin-right: 20px;
+    display: inline-block;
+  }
+
+
+  /* remove the default select arrow for IE10 and up */
+    #date_month select::-ms-expand ,#date_year select::-ms-expand {
+      display: none;
+  }
+
+    #date_month select,#date_year select {
+    /* remove the default select arrow for non-IE browsers */
+    -webkit-appearance: none;
+    -moz-appearance: none; /* works on FF35+ */
+    -o-appearance: none;
+    appearance: none;
+
+    padding: 0 28px 0 12px;
+    background: #fff url('#') no-repeat 95% 50%;
+    background: #fff url('#') no-repeat calc(100% - 10px) 50%;
+
+    /* custom arrow set as a background */
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE1cHgiIGhlaWdodD0iOHB4IiB2aWV3Qm94PSIwIDAgMTUgOCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTUgOCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+ICA8cGF0aCBmaWxsPSIjODk4OTg5IMKgIiBkPSJNMS4wMywwLjE3NWMtMC4yMzYtMC4yMzMtMC42MTgtMC4yMzMtMC44NTQsMGMtMC4yMzUsMC4yMzItMC4yMzYsMC42MSwwLDAuODQybDYuODk3LDYuODA5ICAgIGMwLjIzNiwwLjIzMywwLjYxOCwwLjIzMywwLjg1NCwwbDYuODk3LTYuODA5YzAuMjM2LTAuMjMzLDAuMjM2LTAuNjEsMC0wLjg0MmMtMC4yMzYtMC4yMzMtMC42MTgtMC4yMzMtMC44NTQsMEw3LjUsNi4zODQgICAgTDEuMDMsMC4xNzV6Ii8+ICA8L3N2Zz4=);
+
+    box-sizing: border-box;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    border:1px solid transparent;
+    border-radius:8px;
+    font: 400 16px 'Lato', 'Helvetica Neue', helvetica, arial, sans-serif;
+    color: #606060;
+    line-height: 16px;
+    text-indent: 0.01px;
+    text-overflow: '';
+
+    width: 100%;
+    height: 42px;
+    transition:all 1s;
+  }
+#date_month select:hover,#date_year select:hover
+{
+  border-color: #b0b0b0;
+  outline: none;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.025);
+}
+
+  /* NOTE: Two Options for IE9, if needed:
+
+  1. It is possible to remove the arrows for IE9 with a hacky select-wrapper element that clips/masks the arrows out of view.
+
+  2. Use an 'LTE IE9' conditional comment on the HTML tag, and reset to the element's default styling. Having the default arrows for IE9 only is likely acceptable degradation for most projects.
+
+  */
+
+
+.footnote {
+    margin: 40px 0 0 20px;
+    font-weight: 500;
+    font-size: 0.75em;
+    color: #a0a0a0;
+}
+.date_day {
+    position: relative;
+    font: 300 1em/48px "Open Sans";
+    margin: 0 0 8px;
+    padding: 0;
+    /*border-bottom: 1px solid #c0c0c0;*/
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+
+    color: #505050;
+    width:280px;
+}
+
+.date_day:hover {
+    color: black;
+}
+
+.date_day i {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 48px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    /*background-color: #e0e0e0;
+box-shadow: 1px 1px 1px rgba(0,0,0,0.25);*/
+    font-size: 1em;
+    transition: box-shadow .2s, color .3s, background-color .4s;
+}
+
+.date_day input {
+    box-sizing: border-box;
+    z-index: 1;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    float: left;
+    font-size: 13px;
+    font: inherit;
+    border: 0;
+    margin: 0;
+    padding: 0 4px 0 56px;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    width: 200px;
+    height: 40px;
+    line-height: 42px;
+    background: transparent;
+    color: inherit;
+    transition: border-color .2s, color .2s, background-color .4s;
+}
+
+.date_day input[disabled]:active,
+.date_day input[disabled]:focus,
+.date_day input[disabled]:hover {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.date_day input:active,
+.date_day input:focus,
+.date_day.dateSelector:hover input {
+    border-color: #b0b0b0;
+    outline: none;
+    color: black;
+    background-color: rgba(0, 0, 0, 0.025);
+}
+.date_day.dateSelector {
+    transition: background-color .2s;
+}
+
+  .calendar {
+    position: relative;
+    display: block;
+    font: 500 0.8em/30px "Open Sans";
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    padding: 0 0 0 57px;
+    color: #404040;
+}
+
+  .calendar .view {
+    position: relative;
+    float: left;
+    top:10px;
+    left:-60px;
+    background-color:rgba(43, 43, 46, 0.8);
+    color:rgb(207, 198, 207);
+    z-index: 2;
+}
+
+  .calendar .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+  .calendar .nav .btn {
+    position: absolute;
+    display: block;
+    z-index: 1;
+    cursor: pointer;
+    cursor: hand;
+    width: 32px;
+    height: 32px;
+    line-height: 31px;
+    top: 0;
+    left: auto;
+    transition: opacity .5s;
+    border-radius: 4px;
+}
+
+  .calendar .nav .btn:hover {
+    color: #808080;
+    background: #e0e0e0;
+    border-color: #606060;
+}
+
+  .calendar .nav .prev {
+    left: 0;
+}
+
+  .calendar .nav .prev-year {
+    opacity: 0;
+    left: 32px;
+}
+
+  .calendar .nav:hover .prev-year {
+    opacity: 1;
+}
+
+  .calendar .nav .next-year {
+    opacity: 0;
+    right: 32px !important;
+}
+
+  .calendar .nav:hover .next-year {
+    opacity: 1;
+}
+
+  .calendar .nav .next {
+    right: 0;
+}
+
+  .calendar .head {}
+
+  .calendar .head .title {
+    font: 300 1.2em/32px "Open Sans";
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+  .calendar .head span {
+    cursor: pointer;
+}
+
+  .calendar .row {
+    clear: both;
+}
+
+  .calendar .row.th {
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 40px;
+}
+
+  .calendar .row.th .C {
+    border-bottom: 1px solid #c0c0c0;
+    border-radius: 0;
+}
+
+  .calendar .C {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    transition: background-color .05s, color .05s;
+    border-radius: 50%;
+}
+
+  .calendar .C.mn {
+    cursor: pointer;
+    cursor: hand;
+}
+
+  .calendar .C.mn:hover {
+    background: #e7d9d9;
+    color: rgb(88, 89, 84);
+}
+
+  .calendar .C.g {
+    color: #a0a0a0;
+    font-weight: 300;
+}
+
+  .calendar .C.slctd {
+    background: #dfd5d5;
+    color: rgb(78, 76, 74);
+    font-size: 1.15em;
+    font-weight: 300;
+}
+
+  .calendar .C.today {
+    font-weight: 900;
+    font-size: 1.3em;
+}
+
+  .calendar .selected {
+    margin: 0 0 0 64px;
+    float: right;
+    text-align: center;
+    width: 280px;
+}
+
+  .calendar .selected .desc {
+    border-bottom: 1px solid #c0c0c0;
+}
+
+  .calendar .selected .val {
+    padding: 0 8px;
+    background: #f0f0f0;
+    color: #808080;
+}
+
+  .calendar .dayArea {
+    position: relative;
+    width: 280px;
+    height: 240px;
+    overflow: hidden;
+}
+  .calendar .dayArea .mArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/google_icon/material-icons.css">
+    <link rel="stylesheet" href="css/private/login.css">
+    <script src="http://cdn.bootcss.com/Chart.js/2.5.0/Chart.bundle.js"></script>
+    <script src="http://cdn.bootcss.com/Chart.js/2.5.0/Chart.js"></script>
+    <script type="text/javascript" src="cdn/jquery-3.1.1.js"></script>
+    <title>主页</title>
+    <style>
+        body {
+            margin: 0;
+            pdding: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 16px;
+            overflow-y: scroll;
+            background-color: #EFEFEF;
+        }
+
+        body::-webkit-scrollbar {
+            width: 8px;
+            height: 5px;
+            background-color: #F5F5F5;
+        }
+        /*定义滚动条轨道 内阴影+圆角*/
+
+        body::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+        /*定义滑块 内阴影+圆角*/
+
+        body::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="block"></div>
+    <section id="login">
+        <div id="login_box">
+            <div id="header">
+                <div id="cont-lock"><i class="material-icons lock">account_circle</i></div>
+                <div id="bottom-head">
+                    <h1 id="logintoregister">Login</h1></div>
+            </div>
+                <div class="group">
+                    <input id="username" class="inputMaterial" type="text" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Username</label>
+                </div>
+                <div class="group">
+                    <input id="password" class="inputMaterial" type="password" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Password</label>
+                </div>
+                <button id="buttonlogintoregister">Login</button>
+            <div id="footer-box">
+                <p class="footer-text"><span class="sign-up"></span></p>
+            </div>
+        </div>
+    </section>
+    <header>
+            <a href="#" id="home_page"><i class="material-icons use_icon">home</i></a>
+            <h2>能源监控系统</h2>
+            <div class="fright" id="user_icon">
+                <i class="material-icons use_icon">account_circle</i>
+            </div>
+            <div id="user_launch" class="absolute">
+                <ul>
+                    <li ><a class="bt_login">Login</a></li>
+                </ul>
+            </div>
+    </header>
+    <section id="showcase">
+        <div class="container">
+                <h1>Energy&nbsp;Monitor</h1>
+                <div class="bt_login">
+                    <button class="login_form" type="button" name="button">Get&nbsp;Start!</button>
+                </div>
+        </div>
+    </section>
+    <section id="showchart">
+      <div class="container">
+          <div class="chart">
+              <canvas id="line" style="width:400px; height:400px;"></canvas>
+          </div>
+          <div class="chart">
+              <canvas id="bar" style="width:400px; height:400px;"></canvas>
+          </div>
+      </div>
+    </section>
+    <footer>
+        <span>@J&T&nbsp;q1653082552@outlook.com</span>
+    </footer>
+</body>
+<script src="js/model/model.js"></script>
+<script src="js/private/login.js"></script>
+
+
+<script>
+    var data = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "My First dataset",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: "butt",
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [65, 59, 80, 81, 56, 55, 40],
+            spanGaps: false,
+        }]
+    };
+    var ctx1 = document.getElementById("line").getContext("2d");
+    var myChart = new Chart(ctx1, {
+        type: "line",
+        data: data,
+    });
+    var ctx2 = document.getElementById("bar").getContext("2d");
+    var myChart = new Chart(ctx2, {
+        type: "bar",
+        data: data,
+    });
+</script>
+
+</html>
